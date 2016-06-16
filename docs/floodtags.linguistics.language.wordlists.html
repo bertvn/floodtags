@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module floodtags.linguistics.language.wordlists</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="floodtags.html"><font color="#ffffff">floodtags</font></a>.<a href="floodtags.linguistics.html"><font color="#ffffff">linguistics</font></a>.<a href="floodtags.linguistics.language.html"><font color="#ffffff">language</font></a>.wordlists</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cbert%5Cpycharmprojects%5Cfloodtags%5Cfloodtags%5Clinguistics%5Clanguage%5Cwordlists.py">c:\users\bert\pycharmprojects\floodtags\floodtags\linguistics\language\wordlists.py</a></font></td></tr></table>
+    <p><tt>module&nbsp;containing&nbsp;<a href="#WordList">WordList</a>&nbsp;classes&nbsp;for&nbsp;filtering&nbsp;on/out&nbsp;certain&nbsp;words</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="csv.html">csv</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="floodtags.linguistics.language.wordlists.html#AbstractWordList">AbstractWordList</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="floodtags.linguistics.language.wordlists.html#PartialWordList">PartialWordList</a>
+</font></dt><dt><font face="helvetica, arial"><a href="floodtags.linguistics.language.wordlists.html#WordList">WordList</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="AbstractWordList">class <strong>AbstractWordList</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#AbstractWordList">AbstractWordList</a>&nbsp;is&nbsp;the&nbsp;abstract&nbsp;base&nbsp;class&nbsp;for&nbsp;all&nbsp;wordlist&nbsp;classes<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="AbstractWordList-__init__"><strong>__init__</strong></a>(self, file)</dt><dd><tt>constructor&nbsp;for&nbsp;<a href="#AbstractWordList">AbstractWordList</a><br>
+:param&nbsp;file:&nbsp;name&nbsp;of&nbsp;the&nbsp;file&nbsp;that&nbsp;is&nbsp;used&nbsp;as&nbsp;the&nbsp;wordlist<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="AbstractWordList-append"><strong>append</strong></a>(self, string)</dt><dd><tt>add&nbsp;word&nbsp;to&nbsp;the&nbsp;wordlist<br>
+:param&nbsp;string:&nbsp;word&nbsp;that&nbsp;needs&nbsp;to&nbsp;be&nbsp;added<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="AbstractWordList-match"><strong>match</strong></a>(self, sentence) -&gt; bool</dt><dd><tt>tests&nbsp;if&nbsp;sentence&nbsp;has&nbsp;a&nbsp;word&nbsp;contained&nbsp;in&nbsp;the&nbsp;wordlist<br>
+:param&nbsp;sentence:&nbsp;string&nbsp;that&nbsp;needs&nbsp;to&nbsp;be&nbsp;checked<br>
+:return:&nbsp;boolean&nbsp;containing&nbsp;whether&nbsp;or&nbsp;not&nbsp;a&nbsp;match&nbsp;has&nbsp;been&nbsp;found</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset([])</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PartialWordList">class <strong>PartialWordList</strong></a>(<a href="floodtags.linguistics.language.wordlists.html#AbstractWordList">AbstractWordList</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Wordlist&nbsp;that&nbsp;matches&nbsp;full,&nbsp;partial&nbsp;and&nbsp;not.<br>
+full&nbsp;meaning&nbsp;the&nbsp;string&nbsp;has&nbsp;to&nbsp;be&nbsp;the&nbsp;same&nbsp;as&nbsp;a&nbsp;full&nbsp;entry&nbsp;in&nbsp;the&nbsp;wordlist<br>
+partial&nbsp;means&nbsp;the&nbsp;string&nbsp;has&nbsp;to&nbsp;contain&nbsp;a&nbsp;partial&nbsp;entry&nbsp;in&nbsp;the&nbsp;wordlist<br>
+not&nbsp;means&nbsp;the&nbsp;must&nbsp;not&nbsp;contain&nbsp;a&nbsp;not&nbsp;entry&nbsp;in&nbsp;the&nbsp;wordlist<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="floodtags.linguistics.language.wordlists.html#PartialWordList">PartialWordList</a></dd>
+<dd><a href="floodtags.linguistics.language.wordlists.html#AbstractWordList">AbstractWordList</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="PartialWordList-__init__"><strong>__init__</strong></a>(self, file)</dt><dd><tt>constructor&nbsp;for&nbsp;<a href="#PartialWordList">PartialWordList</a><br>
+:param&nbsp;file:&nbsp;name&nbsp;of&nbsp;the&nbsp;file&nbsp;that&nbsp;is&nbsp;used&nbsp;as&nbsp;the&nbsp;wordlist<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="PartialWordList-match"><strong>match</strong></a>(self, sentence) -&gt; bool</dt><dd><tt>test&nbsp;if&nbsp;sentence&nbsp;matches&nbsp;a&nbsp;full&nbsp;or&nbsp;partial&nbsp;word,&nbsp;but&nbsp;not&nbsp;a&nbsp;not&nbsp;word<br>
+:param&nbsp;sentence:&nbsp;string&nbsp;that&nbsp;needs&nbsp;to&nbsp;be&nbsp;matched<br>
+:return:&nbsp;Boolean&nbsp;containing&nbsp;whether&nbsp;or&nbsp;not&nbsp;a&nbsp;match&nbsp;has&nbsp;been&nbsp;found</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset([])</dl>
+
+<hr>
+Methods inherited from <a href="floodtags.linguistics.language.wordlists.html#AbstractWordList">AbstractWordList</a>:<br>
+<dl><dt><a name="PartialWordList-append"><strong>append</strong></a>(self, string)</dt><dd><tt>add&nbsp;word&nbsp;to&nbsp;the&nbsp;wordlist<br>
+:param&nbsp;string:&nbsp;word&nbsp;that&nbsp;needs&nbsp;to&nbsp;be&nbsp;added<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="floodtags.linguistics.language.wordlists.html#AbstractWordList">AbstractWordList</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="WordList">class <strong>WordList</strong></a>(<a href="floodtags.linguistics.language.wordlists.html#AbstractWordList">AbstractWordList</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>wordlist&nbsp;that&nbsp;matches&nbsp;if&nbsp;word&nbsp;exists<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="floodtags.linguistics.language.wordlists.html#WordList">WordList</a></dd>
+<dd><a href="floodtags.linguistics.language.wordlists.html#AbstractWordList">AbstractWordList</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="WordList-__init__"><strong>__init__</strong></a>(self, file)</dt><dd><tt>constructor&nbsp;for&nbsp;<a href="#WordList">WordList</a><br>
+:param&nbsp;file:&nbsp;name&nbsp;of&nbsp;the&nbsp;file&nbsp;that&nbsp;is&nbsp;used&nbsp;as&nbsp;the&nbsp;wordlist<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="WordList-match"><strong>match</strong></a>(self, sentence) -&gt; bool</dt><dd><tt>tests&nbsp;if&nbsp;sentence&nbsp;contains&nbsp;a&nbsp;word&nbsp;in&nbsp;the&nbsp;wordlist<br>
+:param&nbsp;sentence:&nbsp;string&nbsp;that&nbsp;needs&nbsp;to&nbsp;be&nbsp;checked<br>
+:return:&nbsp;Boolean&nbsp;containing&nbsp;whether&nbsp;or&nbsp;not&nbsp;a&nbsp;match&nbsp;has&nbsp;been&nbsp;found</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset([])</dl>
+
+<hr>
+Methods inherited from <a href="floodtags.linguistics.language.wordlists.html#AbstractWordList">AbstractWordList</a>:<br>
+<dl><dt><a name="WordList-append"><strong>append</strong></a>(self, string)</dt><dd><tt>add&nbsp;word&nbsp;to&nbsp;the&nbsp;wordlist<br>
+:param&nbsp;string:&nbsp;word&nbsp;that&nbsp;needs&nbsp;to&nbsp;be&nbsp;added<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="floodtags.linguistics.language.wordlists.html#AbstractWordList">AbstractWordList</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

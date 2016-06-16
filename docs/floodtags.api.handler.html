@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module floodtags.api.handler</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="floodtags.html"><font color="#ffffff">floodtags</font></a>.<a href="floodtags.api.html"><font color="#ffffff">api</font></a>.handler</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cbert%5Cpycharmprojects%5Cfloodtags%5Cfloodtags%5Capi%5Chandler.py">c:\users\bert\pycharmprojects\floodtags\floodtags\api\handler.py</a></font></td></tr></table>
+    <p><tt>handles&nbsp;interactions&nbsp;with&nbsp;the&nbsp;floodtags&nbsp;api&nbsp;and&nbsp;other&nbsp;data&nbsp;sources</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="floodtags.api.crawler.html">floodtags.api.crawler</a><br>
+<a href="datetime.html">datetime</a><br>
+</td><td width="25%" valign=top><a href="json.html">json</a><br>
+<a href="polyglot.html">polyglot</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="floodtags.api.handler.html#APIHandler">APIHandler</a>
+</font></dt><dt><font face="helvetica, arial"><a href="floodtags.api.handler.html#AbstractAPI">AbstractAPI</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="floodtags.api.handler.html#API">API</a>
+</font></dt><dt><font face="helvetica, arial"><a href="floodtags.api.handler.html#FakeAPI">FakeAPI</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="floodtags.api.handler.html#Tweet">Tweet</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="API">class <strong>API</strong></a>(<a href="floodtags.api.handler.html#AbstractAPI">AbstractAPI</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#API">API</a>&nbsp;class&nbsp;for&nbsp;getting&nbsp;tweets<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="floodtags.api.handler.html#API">API</a></dd>
+<dd><a href="floodtags.api.handler.html#AbstractAPI">AbstractAPI</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="API-__init__"><strong>__init__</strong></a>(self, region)</dt><dd><tt>constructor&nbsp;for&nbsp;<a href="#API">API</a><br>
+:param&nbsp;region:&nbsp;datastream&nbsp;to&nbsp;be&nbsp;used<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="API-get_tweets"><strong>get_tweets</strong></a>(self, start_date, end_date)</dt><dd><tt>fetches&nbsp;tweets&nbsp;from&nbsp;start&nbsp;date&nbsp;till&nbsp;end&nbsp;date<br>
+:param&nbsp;start_date:&nbsp;datetime&nbsp;that&nbsp;contains&nbsp;the&nbsp;starting&nbsp;point&nbsp;to&nbsp;gather&nbsp;tweets<br>
+:param&nbsp;end_date:&nbsp;datetime&nbsp;that&nbsp;contains&nbsp;the&nbsp;end&nbsp;point&nbsp;for&nbsp;gathering&nbsp;tweets<br>
+:return:&nbsp;tweets</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset([])</dl>
+
+<hr>
+Data descriptors inherited from <a href="floodtags.api.handler.html#AbstractAPI">AbstractAPI</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="APIHandler">class <strong>APIHandler</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>handles&nbsp;the&nbsp;api<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="APIHandler-__init__"><strong>__init__</strong></a>(self, api)</dt><dd><tt>constructor&nbsp;for&nbsp;<a href="#APIHandler">APIHandler</a><br>
+:param&nbsp;api:&nbsp;class&nbsp;that&nbsp;interacts&nbsp;with&nbsp;the&nbsp;api<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="APIHandler-get_tweets"><strong>get_tweets</strong></a>(self)</dt><dd><tt>fetches&nbsp;tweets&nbsp;and&nbsp;wraps&nbsp;them&nbsp;in&nbsp;<a href="#Tweet">Tweet</a>&nbsp;objects<br>
+:return:&nbsp;list&nbsp;of&nbsp;tweets</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="AbstractAPI">class <strong>AbstractAPI</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Abstract&nbsp;base&nbsp;class&nbsp;for&nbsp;<a href="#API">API</a><br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="AbstractAPI-__init__"><strong>__init__</strong></a>(self, region)</dt><dd><tt>constructor&nbsp;for&nbsp;the&nbsp;<a href="#AbstractAPI">AbstractAPI</a><br>
+:param&nbsp;region:&nbsp;datasource<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="AbstractAPI-get_tweets"><strong>get_tweets</strong></a>(self, start_date, end_date)</dt><dd><tt>fetches&nbsp;tweets&nbsp;from&nbsp;start&nbsp;date&nbsp;till&nbsp;end&nbsp;date<br>
+:param&nbsp;start_date:&nbsp;datetime&nbsp;that&nbsp;contains&nbsp;the&nbsp;starting&nbsp;point&nbsp;to&nbsp;gather&nbsp;tweets<br>
+:param&nbsp;end_date:&nbsp;datetime&nbsp;that&nbsp;contains&nbsp;the&nbsp;end&nbsp;point&nbsp;for&nbsp;gathering&nbsp;tweets<br>
+:return:&nbsp;tweets</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset([])</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="FakeAPI">class <strong>FakeAPI</strong></a>(<a href="floodtags.api.handler.html#AbstractAPI">AbstractAPI</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#API">API</a>&nbsp;class&nbsp;used&nbsp;when&nbsp;either&nbsp;using&nbsp;the&nbsp;demo&nbsp;data&nbsp;or&nbsp;a&nbsp;seperate&nbsp;file&nbsp;instead&nbsp;of&nbsp;the&nbsp;actual&nbsp;<a href="#API">API</a><br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="floodtags.api.handler.html#FakeAPI">FakeAPI</a></dd>
+<dd><a href="floodtags.api.handler.html#AbstractAPI">AbstractAPI</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="FakeAPI-__init__"><strong>__init__</strong></a>(self, region)</dt><dd><tt>constructor&nbsp;for&nbsp;<a href="#FakeAPI">FakeAPI</a><br>
+:param&nbsp;region:&nbsp;datasource<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="FakeAPI-get_tweets"><strong>get_tweets</strong></a>(self, start_date, end_date)</dt><dd><tt>fetches&nbsp;tweets<br>
+:param&nbsp;start_date:&nbsp;unused,&nbsp;is&nbsp;added&nbsp;to&nbsp;match&nbsp;the&nbsp;real&nbsp;<a href="#API">API</a><br>
+:param&nbsp;end_date:&nbsp;unused,&nbsp;is&nbsp;added&nbsp;to&nbsp;match&nbsp;the&nbsp;real&nbsp;<a href="#API">API</a><br>
+:return:&nbsp;tweets</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset([])</dl>
+
+<hr>
+Data descriptors inherited from <a href="floodtags.api.handler.html#AbstractAPI">AbstractAPI</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Tweet">class <strong>Tweet</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>wrapper&nbsp;for&nbsp;tweet&nbsp;dictionary<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Tweet-__init__"><strong>__init__</strong></a>(self, tweet_json)</dt><dd><tt>constructor&nbsp;for&nbsp;<a href="#Tweet">Tweet</a>&nbsp;class<br>
+:param&nbsp;tweet_json:&nbsp;tweet&nbsp;dictionary&nbsp;that&nbsp;needs&nbsp;to&nbsp;be&nbsp;wrapped<br>
+:return:</tt></dd></dl>
+
+<dl><dt><a name="Tweet-get_importance"><strong>get_importance</strong></a>(self)</dt><dd><tt>get&nbsp;max_importance&nbsp;value<br>
+:return:&nbsp;highest&nbsp;importance&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="Tweet-get_language"><strong>get_language</strong></a>(self)</dt><dd><tt>get&nbsp;language&nbsp;of&nbsp;tweet&nbsp;according&nbsp;to&nbsp;polyglot<br>
+:return:&nbsp;language&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="Tweet-get_processed_text"><strong>get_processed_text</strong></a>(self)</dt><dd><tt>get&nbsp;pre-processed&nbsp;tweet<br>
+:return:&nbsp;pre-processed&nbsp;tweet</tt></dd></dl>
+
+<dl><dt><a name="Tweet-set_processed_text"><strong>set_processed_text</strong></a>(self, text)</dt><dd><tt>set&nbsp;pre-processed&nbsp;tweet<br>
+:param&nbsp;text:&nbsp;pre-processed&nbsp;tweet<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Tweet-update_importance"><strong>update_importance</strong></a>(self, importance)</dt><dd><tt>updates&nbsp;max_importance&nbsp;value&nbsp;if&nbsp;importance&nbsp;is&nbsp;higher&nbsp;then&nbsp;max_importance<br>
+:param&nbsp;importance:&nbsp;new&nbsp;importance&nbsp;value<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

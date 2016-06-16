@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module floodtags.datascience.filtering.filtering</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="floodtags.html"><font color="#ffffff">floodtags</font></a>.<a href="floodtags.datascience.html"><font color="#ffffff">datascience</font></a>.<a href="floodtags.datascience.filtering.html"><font color="#ffffff">filtering</font></a>.filtering</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cbert%5Cpycharmprojects%5Cfloodtags%5Cfloodtags%5Cdatascience%5Cfiltering%5Cfiltering.py">c:\users\bert\pycharmprojects\floodtags\floodtags\datascience\filtering\filtering.py</a></font></td></tr></table>
+    <p><tt>module&nbsp;for&nbsp;grading&nbsp;the&nbsp;importance&nbsp;of&nbsp;clusters</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="floodtags.datascience.filtering.algorithms.html">floodtags.datascience.filtering.algorithms</a><br>
+</td><td width="25%" valign=top><a href="floodtags.html">floodtags</a><br>
+</td><td width="25%" valign=top><a href="floodtags.linguistics.sanitizing.regexhandler.html">floodtags.linguistics.sanitizing.regexhandler</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="floodtags.datascience.filtering.filtering.html#ClusterAnalysis">ClusterAnalysis</a>
+</font></dt><dt><font face="helvetica, arial"><a href="floodtags.datascience.filtering.filtering.html#Filter">Filter</a>
+</font></dt><dt><font face="helvetica, arial"><a href="floodtags.datascience.filtering.filtering.html#TweetAnalysis">TweetAnalysis</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ClusterAnalysis">class <strong>ClusterAnalysis</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>class&nbsp;for&nbsp;grading&nbsp;the&nbsp;importance&nbsp;of&nbsp;a&nbsp;cluster<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="ClusterAnalysis-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>constructor&nbsp;for&nbsp;<a href="#ClusterAnalysis">ClusterAnalysis</a><br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="ClusterAnalysis-analyze_cluster"><strong>analyze_cluster</strong></a>(self, cluster)</dt><dd><tt>calculate&nbsp;the&nbsp;importance&nbsp;value&nbsp;of&nbsp;the&nbsp;cluster<br>
+:param&nbsp;cluster:&nbsp;cluster&nbsp;of&nbsp;which&nbsp;the&nbsp;importance&nbsp;value&nbsp;needs&nbsp;to&nbsp;be&nbsp;calculated<br>
+:return:&nbsp;importance&nbsp;value&nbsp;(between&nbsp;0&nbsp;and&nbsp;1)</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="ClusterAnalysis-normalize"><strong>normalize</strong></a>(value, clustersize)</dt><dd><tt>nomralize&nbsp;the&nbsp;importance&nbsp;value&nbsp;of&nbsp;the&nbsp;cluster<br>
+:param&nbsp;value:&nbsp;unnormalized&nbsp;importance&nbsp;value<br>
+:param&nbsp;clustersize:&nbsp;size&nbsp;of&nbsp;the&nbsp;cluster<br>
+:return:</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Filter">class <strong>Filter</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;for&nbsp;grading&nbsp;the&nbsp;importance&nbsp;of&nbsp;all&nbsp;clusters<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Filter-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>constructor&nbsp;for&nbsp;<a href="#Filter">Filter</a><br>
+:return:</tt></dd></dl>
+
+<dl><dt><a name="Filter-set_data"><strong>set_data</strong></a>(self, data)</dt><dd><tt>set&nbsp;clusters&nbsp;that&nbsp;need&nbsp;to&nbsp;be&nbsp;analyzed&nbsp;for&nbsp;importance&nbsp;values<br>
+:param&nbsp;data:&nbsp;list&nbsp;of&nbsp;clusters<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Filter-start_filtering"><strong>start_filtering</strong></a>(self)</dt><dd><tt>calculate&nbsp;the&nbsp;importance&nbsp;values<br>
+:return:&nbsp;list&nbsp;containing&nbsp;the&nbsp;order&nbsp;of&nbsp;the&nbsp;clusters&nbsp;based&nbsp;on&nbsp;importance</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="TweetAnalysis">class <strong>TweetAnalysis</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>class&nbsp;for&nbsp;grading&nbsp;the&nbsp;importance&nbsp;of&nbsp;a&nbsp;tweet<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="TweetAnalysis-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>constructor&nbsp;for&nbsp;<a href="#TweetAnalysis">TweetAnalysis</a><br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="TweetAnalysis-analyze_tweet"><strong>analyze_tweet</strong></a>(self, tweet)</dt><dd><tt>calculate&nbsp;importance&nbsp;value&nbsp;of&nbsp;tweet<br>
+:param&nbsp;tweet:&nbsp;tweet&nbsp;that&nbsp;needs&nbsp;to&nbsp;be&nbsp;analyzed<br>
+:return:&nbsp;importance&nbsp;value</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

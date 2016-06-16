@@ -1,0 +1,1 @@
+python main.py -in inputfile -tp enrichment -out outputfile -p 1

@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module floodtags.datascience.clustering.clustering</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="floodtags.html"><font color="#ffffff">floodtags</font></a>.<a href="floodtags.datascience.html"><font color="#ffffff">datascience</font></a>.<a href="floodtags.datascience.clustering.html"><font color="#ffffff">clustering</font></a>.clustering</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Cbert%5Cpycharmprojects%5Cfloodtags%5Cfloodtags%5Cdatascience%5Cclustering%5Cclustering.py">c:\users\bert\pycharmprojects\floodtags\floodtags\datascience\clustering\clustering.py</a></font></td></tr></table>
+    <p><tt>module&nbsp;for&nbsp;clustering&nbsp;tweets</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="floodtags.html">floodtags</a><br>
+</td><td width="25%" valign=top><a href="multiprocessing.html">multiprocessing</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+</td><td width="25%" valign=top><a href="floodtags.linguistics.sanitizing.regexhandler.html">floodtags.linguistics.sanitizing.regexhandler</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="floodtags.datascience.clustering.clustering.html#AbstractClustering">AbstractClustering</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="floodtags.datascience.clustering.clustering.html#BisectingKmeansFun">BisectingKmeansFun</a>
+</font></dt><dt><font face="helvetica, arial"><a href="floodtags.datascience.clustering.clustering.html#TweetKMeans">TweetKMeans</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="floodtags.datascience.clustering.clustering.html#Cluster">Cluster</a>
+</font></dt><dt><font face="helvetica, arial"><a href="floodtags.datascience.clustering.clustering.html#CosineSimilarity">CosineSimilarity</a>
+</font></dt><dt><font face="helvetica, arial"><a href="floodtags.datascience.clustering.clustering.html#Vectorizer">Vectorizer</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="AbstractClustering">class <strong>AbstractClustering</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Abstract&nbsp;base&nbsp;class&nbsp;for&nbsp;cluster&nbsp;algorithms<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="AbstractClustering-cluster_tweet"><strong>cluster_tweet</strong></a>(self, clustering, data=None, amount=None)</dt><dd><tt>groups&nbsp;clustered&nbsp;tweets&nbsp;into&nbsp;cluster&nbsp;objects<br>
+:param&nbsp;clustering:&nbsp;array&nbsp;containing&nbsp;the&nbsp;cluster&nbsp;for&nbsp;each&nbsp;tweet<br>
+:param&nbsp;data:&nbsp;clustered&nbsp;tweets.&nbsp;if&nbsp;left&nbsp;empty&nbsp;the&nbsp;entire&nbsp;collection&nbsp;of&nbsp;tweets&nbsp;will&nbsp;be&nbsp;used<br>
+:param&nbsp;amount:&nbsp;amount&nbsp;of&nbsp;clusters&nbsp;if&nbsp;left&nbsp;empty&nbsp;the&nbsp;the&nbsp;cluster&nbsp;amount&nbsp;will&nbsp;be&nbsp;gotten&nbsp;from&nbsp;self.<strong>cluster_amount</strong><br>
+:return:&nbsp;array&nbsp;of&nbsp;cluster&nbsp;objects</tt></dd></dl>
+
+<dl><dt><a name="AbstractClustering-set_data"><strong>set_data</strong></a>(self, data)</dt><dd><tt>sets&nbsp;data&nbsp;for&nbsp;the&nbsp;clustering&nbsp;algorithm<br>
+:param&nbsp;data:&nbsp;tweets<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="AbstractClustering-start_algorithm"><strong>start_algorithm</strong></a>(self)</dt><dd><tt>start&nbsp;clustering&nbsp;the&nbsp;stored&nbsp;tweets<br>
+:return:&nbsp;list&nbsp;of&nbsp;clusters&nbsp;containing&nbsp;tweets</tt></dd></dl>
+
+<dl><dt><a name="AbstractClustering-vectorize_data"><strong>vectorize_data</strong></a>(self, idf=False)</dt><dd><tt>turns&nbsp;tweets&nbsp;into&nbsp;vector&nbsp;representations<br>
+:param&nbsp;idf:&nbsp;wether&nbsp;or&nbsp;not&nbsp;to&nbsp;use&nbsp;tf-idf,&nbsp;default&nbsp;False<br>
+:return:&nbsp;sparse&nbsp;vector&nbsp;array</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset([])</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="BisectingKmeansFun">class <strong>BisectingKmeansFun</strong></a>(<a href="floodtags.datascience.clustering.clustering.html#AbstractClustering">AbstractClustering</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;for&nbsp;applying&nbsp;Bisecting&nbsp;Kmeans&nbsp;on&nbsp;tweets&nbsp;using&nbsp;a&nbsp;function&nbsp;as&nbsp;limiter<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="floodtags.datascience.clustering.clustering.html#BisectingKmeansFun">BisectingKmeansFun</a></dd>
+<dd><a href="floodtags.datascience.clustering.clustering.html#AbstractClustering">AbstractClustering</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="BisectingKmeansFun-__init__"><strong>__init__</strong></a>(self, cores)</dt><dd><tt>constructor&nbsp;for&nbsp;<a href="#BisectingKmeansFun">BisectingKmeansFun</a><br>
+:param&nbsp;cores:&nbsp;amount&nbsp;of&nbsp;processes&nbsp;the&nbsp;clustering&nbsp;is&nbsp;allowed&nbsp;to&nbsp;use<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="BisectingKmeansFun-set_function"><strong>set_function</strong></a>(self, function, guard)</dt><dd><tt>changes&nbsp;the&nbsp;function&nbsp;and&nbsp;limit&nbsp;value.&nbsp;by&nbsp;default&nbsp;it&nbsp;is&nbsp;set&nbsp;to&nbsp;cosine&nbsp;similarity&nbsp;with&nbsp;a&nbsp;guard&nbsp;of&nbsp;0.5<br>
+:param&nbsp;function:&nbsp;function&nbsp;that&nbsp;is&nbsp;used&nbsp;to&nbsp;decide&nbsp;whether&nbsp;clustering&nbsp;is&nbsp;done<br>
+:param&nbsp;guard:&nbsp;value&nbsp;that&nbsp;decides&nbsp;whether&nbsp;clustering&nbsp;is&nbsp;done<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="BisectingKmeansFun-start_algorithm"><strong>start_algorithm</strong></a>(self)</dt><dd><tt>starts&nbsp;clustering&nbsp;the&nbsp;tweets<br>
+:return:&nbsp;List&nbsp;of&nbsp;clusters&nbsp;containing&nbsp;tweets</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset([])</dl>
+
+<hr>
+Methods inherited from <a href="floodtags.datascience.clustering.clustering.html#AbstractClustering">AbstractClustering</a>:<br>
+<dl><dt><a name="BisectingKmeansFun-cluster_tweet"><strong>cluster_tweet</strong></a>(self, clustering, data=None, amount=None)</dt><dd><tt>groups&nbsp;clustered&nbsp;tweets&nbsp;into&nbsp;cluster&nbsp;objects<br>
+:param&nbsp;clustering:&nbsp;array&nbsp;containing&nbsp;the&nbsp;cluster&nbsp;for&nbsp;each&nbsp;tweet<br>
+:param&nbsp;data:&nbsp;clustered&nbsp;tweets.&nbsp;if&nbsp;left&nbsp;empty&nbsp;the&nbsp;entire&nbsp;collection&nbsp;of&nbsp;tweets&nbsp;will&nbsp;be&nbsp;used<br>
+:param&nbsp;amount:&nbsp;amount&nbsp;of&nbsp;clusters&nbsp;if&nbsp;left&nbsp;empty&nbsp;the&nbsp;the&nbsp;cluster&nbsp;amount&nbsp;will&nbsp;be&nbsp;gotten&nbsp;from&nbsp;self.<strong>cluster_amount</strong><br>
+:return:&nbsp;array&nbsp;of&nbsp;cluster&nbsp;objects</tt></dd></dl>
+
+<dl><dt><a name="BisectingKmeansFun-set_data"><strong>set_data</strong></a>(self, data)</dt><dd><tt>sets&nbsp;data&nbsp;for&nbsp;the&nbsp;clustering&nbsp;algorithm<br>
+:param&nbsp;data:&nbsp;tweets<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="BisectingKmeansFun-vectorize_data"><strong>vectorize_data</strong></a>(self, idf=False)</dt><dd><tt>turns&nbsp;tweets&nbsp;into&nbsp;vector&nbsp;representations<br>
+:param&nbsp;idf:&nbsp;wether&nbsp;or&nbsp;not&nbsp;to&nbsp;use&nbsp;tf-idf,&nbsp;default&nbsp;False<br>
+:return:&nbsp;sparse&nbsp;vector&nbsp;array</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="floodtags.datascience.clustering.clustering.html#AbstractClustering">AbstractClustering</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Cluster">class <strong>Cluster</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>class&nbsp;for&nbsp;storing&nbsp;tweets<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Cluster-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>constructor&nbsp;for&nbsp;the&nbsp;<a href="#Cluster">Cluster</a>&nbsp;class<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Cluster-add_tweet"><strong>add_tweet</strong></a>(self, tweet)</dt><dd><tt>add&nbsp;tweet&nbsp;to&nbsp;the&nbsp;cluster<br>
+:param&nbsp;tweet:&nbsp;tweet&nbsp;that&nbsp;needs&nbsp;to&nbsp;be&nbsp;added<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Cluster-get_cosine_sim"><strong>get_cosine_sim</strong></a>(self)</dt><dd><tt>calculates&nbsp;the&nbsp;cosine&nbsp;similarity&nbsp;of&nbsp;the&nbsp;cluster<br>
+:return:&nbsp;cosine&nbsp;similarity&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="Cluster-get_five_latest"><strong>get_five_latest</strong></a>(self)</dt><dd><tt>gets&nbsp;the&nbsp;five&nbsp;latest&nbsp;tweets&nbsp;from&nbsp;the&nbsp;cluster,&nbsp;if&nbsp;there&nbsp;are&nbsp;less&nbsp;then&nbsp;five&nbsp;then&nbsp;all&nbsp;are&nbsp;returned<br>
+:return:&nbsp;list&nbsp;of&nbsp;tweets</tt></dd></dl>
+
+<dl><dt><a name="Cluster-get_five_random"><strong>get_five_random</strong></a>(self)</dt><dd><tt>gets&nbsp;five&nbsp;random&nbsp;tweets&nbsp;from&nbsp;the&nbsp;cluster,&nbsp;if&nbsp;there&nbsp;are&nbsp;less&nbsp;then&nbsp;five&nbsp;then&nbsp;all&nbsp;are&nbsp;returned<br>
+:return:&nbsp;list&nbsp;of&nbsp;tweets</tt></dd></dl>
+
+<dl><dt><a name="Cluster-get_length"><strong>get_length</strong></a>(self)</dt><dd><tt>gets&nbsp;amount&nbsp;of&nbsp;tweets&nbsp;in&nbsp;the&nbsp;cluster<br>
+:return:&nbsp;amount&nbsp;of&nbsp;tweets</tt></dd></dl>
+
+<dl><dt><a name="Cluster-get_tweet"><strong>get_tweet</strong></a>(self, id)</dt><dd><tt>get&nbsp;a&nbsp;specific&nbsp;tweet<br>
+:param&nbsp;id:&nbsp;id&nbsp;of&nbsp;tweet&nbsp;within&nbsp;cluster<br>
+:return:&nbsp;tweet</tt></dd></dl>
+
+<dl><dt><a name="Cluster-get_tweets"><strong>get_tweets</strong></a>(self)</dt><dd><tt>get&nbsp;list&nbsp;of&nbsp;tweets<br>
+:return:&nbsp;list&nbsp;of&nbsp;tweets</tt></dd></dl>
+
+<dl><dt><a name="Cluster-set_importance"><strong>set_importance</strong></a>(self, importance)</dt><dd><tt>set&nbsp;importance&nbsp;value&nbsp;of&nbsp;the&nbsp;tweets&nbsp;in&nbsp;the&nbsp;cluster<br>
+:param&nbsp;importance:&nbsp;importance&nbsp;value<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="CosineSimilarity">class <strong>CosineSimilarity</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>class&nbsp;for&nbsp;calculating&nbsp;the&nbsp;consine&nbsp;similarity&nbsp;of&nbsp;tweets<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="CosineSimilarity-__init__"><strong>__init__</strong></a>(self)</dt><dd><tt>constructor&nbsp;for&nbsp;<a href="#CosineSimilarity">CosineSimilarity</a><br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="CosineSimilarity-calculate_similarity"><strong>calculate_similarity</strong></a>(self, tweets)</dt><dd><tt>calculates&nbsp;the&nbsp;cosine&nbsp;similarity&nbsp;of&nbsp;tweets<br>
+:param&nbsp;tweets:&nbsp;list&nbsp;of&nbsp;tweets<br>
+:return:&nbsp;cosine&nbsp;similarity&nbsp;value</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="TweetKMeans">class <strong>TweetKMeans</strong></a>(<a href="floodtags.datascience.clustering.clustering.html#AbstractClustering">AbstractClustering</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;for&nbsp;performing&nbsp;kmeans&nbsp;clustering&nbsp;on&nbsp;tweets<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="floodtags.datascience.clustering.clustering.html#TweetKMeans">TweetKMeans</a></dd>
+<dd><a href="floodtags.datascience.clustering.clustering.html#AbstractClustering">AbstractClustering</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="TweetKMeans-__init__"><strong>__init__</strong></a>(self, cluster_amount)</dt><dd><tt>constructor&nbsp;for&nbsp;<a href="#TweetKMeans">TweetKMeans</a><br>
+:param&nbsp;cluster_amount:&nbsp;amount&nbsp;of&nbsp;clusters&nbsp;to&nbsp;cluster&nbsp;tweets&nbsp;into<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="TweetKMeans-start_algorithm"><strong>start_algorithm</strong></a>(self)</dt><dd><tt>start&nbsp;clustering&nbsp;the&nbsp;stored&nbsp;tweets<br>
+:return:&nbsp;list&nbsp;of&nbsp;clusters&nbsp;containing&nbsp;tweets</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset([])</dl>
+
+<hr>
+Methods inherited from <a href="floodtags.datascience.clustering.clustering.html#AbstractClustering">AbstractClustering</a>:<br>
+<dl><dt><a name="TweetKMeans-cluster_tweet"><strong>cluster_tweet</strong></a>(self, clustering, data=None, amount=None)</dt><dd><tt>groups&nbsp;clustered&nbsp;tweets&nbsp;into&nbsp;cluster&nbsp;objects<br>
+:param&nbsp;clustering:&nbsp;array&nbsp;containing&nbsp;the&nbsp;cluster&nbsp;for&nbsp;each&nbsp;tweet<br>
+:param&nbsp;data:&nbsp;clustered&nbsp;tweets.&nbsp;if&nbsp;left&nbsp;empty&nbsp;the&nbsp;entire&nbsp;collection&nbsp;of&nbsp;tweets&nbsp;will&nbsp;be&nbsp;used<br>
+:param&nbsp;amount:&nbsp;amount&nbsp;of&nbsp;clusters&nbsp;if&nbsp;left&nbsp;empty&nbsp;the&nbsp;the&nbsp;cluster&nbsp;amount&nbsp;will&nbsp;be&nbsp;gotten&nbsp;from&nbsp;self.<strong>cluster_amount</strong><br>
+:return:&nbsp;array&nbsp;of&nbsp;cluster&nbsp;objects</tt></dd></dl>
+
+<dl><dt><a name="TweetKMeans-set_data"><strong>set_data</strong></a>(self, data)</dt><dd><tt>sets&nbsp;data&nbsp;for&nbsp;the&nbsp;clustering&nbsp;algorithm<br>
+:param&nbsp;data:&nbsp;tweets<br>
+:return:&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="TweetKMeans-vectorize_data"><strong>vectorize_data</strong></a>(self, idf=False)</dt><dd><tt>turns&nbsp;tweets&nbsp;into&nbsp;vector&nbsp;representations<br>
+:param&nbsp;idf:&nbsp;wether&nbsp;or&nbsp;not&nbsp;to&nbsp;use&nbsp;tf-idf,&nbsp;default&nbsp;False<br>
+:return:&nbsp;sparse&nbsp;vector&nbsp;array</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="floodtags.datascience.clustering.clustering.html#AbstractClustering">AbstractClustering</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Vectorizer">class <strong>Vectorizer</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>class&nbsp;used&nbsp;to&nbsp;vectorize&nbsp;tweets<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Vectorizer-vectorize_data"><strong>vectorize_data</strong></a>(self, data, idf=False)</dt><dd><tt>turns&nbsp;tweets&nbsp;into&nbsp;vector&nbsp;representations<br>
+:param&nbsp;data:&nbsp;tweets&nbsp;that&nbsp;are&nbsp;to&nbsp;be&nbsp;vectorized.<br>
+:param&nbsp;idf:&nbsp;wether&nbsp;or&nbsp;not&nbsp;to&nbsp;use&nbsp;tf-idf&nbsp;or&nbsp;just&nbsp;tf,&nbsp;default&nbsp;is&nbsp;False<br>
+:return:&nbsp;sparse&nbsp;vector&nbsp;array</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="Vectorizer-clean_tweet"><strong>clean_tweet</strong></a>(tweet)</dt><dd><tt>adds&nbsp;features&nbsp;to&nbsp;the&nbsp;tweet&nbsp;for&nbsp;more&nbsp;similarity&nbsp;and&nbsp;easier&nbsp;clustering<br>
+:param&nbsp;tweet:&nbsp;tweet&nbsp;that&nbsp;needs&nbsp;to&nbsp;be&nbsp;cleaned<br>
+:return:&nbsp;cleaned&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="Vectorizer-rreplace"><strong>rreplace</strong></a>(s, old, new, occurrence)</dt><dd><tt>replaces&nbsp;the&nbsp;1&nbsp;instance&nbsp;of&nbsp;old&nbsp;with&nbsp;new<br>
+&nbsp;which&nbsp;instance&nbsp;is&nbsp;decided&nbsp;by&nbsp;occurrence&nbsp;and&nbsp;is&nbsp;counted&nbsp;backwards&nbsp;(1&nbsp;is&nbsp;last&nbsp;occurrence)<br>
+:param&nbsp;s:&nbsp;string&nbsp;that&nbsp;needs&nbsp;to&nbsp;be&nbsp;updated<br>
+:param&nbsp;old:&nbsp;substring&nbsp;that&nbsp;needs&nbsp;to&nbsp;be&nbsp;changed<br>
+:param&nbsp;new:&nbsp;replacement&nbsp;substring<br>
+:param&nbsp;occurrence:&nbsp;which&nbsp;instance&nbsp;of&nbsp;old&nbsp;has&nbsp;to&nbsp;be&nbsp;swapped<br>
+:return:&nbsp;updated&nbsp;string</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-recluster"><strong>recluster</strong></a>(cluster, min_size, guard, func)</dt><dd><tt>reclusters&nbsp;clusters&nbsp;until&nbsp;they&nbsp;are&nbsp;below&nbsp;or&nbsp;equal&nbsp;to&nbsp;min_size&nbsp;or&nbsp;if&nbsp;the&nbsp;result&nbsp;of&nbsp;func&nbsp;is&nbsp;higher&nbsp;then&nbsp;the&nbsp;guard<br>
+:param&nbsp;cluster:&nbsp;cluster&nbsp;that&nbsp;is&nbsp;to&nbsp;be&nbsp;reclustered<br>
+:param&nbsp;min_size:&nbsp;minimal&nbsp;allowed&nbsp;size&nbsp;for&nbsp;clusters<br>
+:param&nbsp;guard:&nbsp;minimum&nbsp;value&nbsp;of&nbsp;func&nbsp;for&nbsp;cluster&nbsp;to&nbsp;be&nbsp;concise&nbsp;enough<br>
+:param&nbsp;func:&nbsp;function&nbsp;used&nbsp;to&nbsp;calculate&nbsp;if&nbsp;it&nbsp;exceeds&nbsp;guard<br>
+:return:&nbsp;<a href="#Cluster">Cluster</a>&nbsp;or&nbsp;list&nbsp;of&nbsp;clusters&nbsp;or&nbsp;None&nbsp;in&nbsp;case&nbsp;cluster&nbsp;is&nbsp;empty</tt></dd></dl>
+</td></tr></table>
+</body></html>
