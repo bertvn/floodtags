@@ -148,8 +148,8 @@ if __name__ == '__main__':
                              "(default:webapp)")
     parser.add_argument("-p", "--processes", dest="proc", default=4,
                         help="amount of processes used in clustering (default: 4)")
-    parser.add_argument("-l", "--loop", dest="loop", default=10,
-                        help="amount of times the algorithm loops; integer value or \"infinite\" (default:10)")
+    parser.add_argument("-l", "--loop", dest="loop", default=0,
+                        help="amount of times the algorithm loops; integer value or \"infinite\" (default:0)")
     parser.add_argument("-tf", "-timeframe", dest="timeframe", default=360,
                         help="time frame, used for clustering tweets, in minutes")
 

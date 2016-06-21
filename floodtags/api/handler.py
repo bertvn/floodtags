@@ -7,7 +7,7 @@ from abc import ABCMeta
 import polyglot.detect
 
 import floodtags.api.crawler as crawler
-
+import os
 
 class APIHandler(object):
     """handles the api"""
@@ -169,7 +169,7 @@ class FakeAPI(AbstractAPI):
             # use tweets from demo set
             result = []
             for i in range(self.counter, (self.counter - 5), -1):
-                with open('api/demodata/data' + str(i) + '.json', encoding="utf8") as data_file:
+                with open(os.path.join(os.path.dirname(__file__),'demodata/data' + str(i) + '.json'), encoding="utf8") as data_file:
                     result += json.load(data_file)
             self.counter -= 5
             return result

@@ -16,7 +16,7 @@ class AbstractWordList(metaclass=ABCMeta):
         :param file: name of the file that is used as the wordlist
         :return: None
         """
-        self.word_list = self._readfile(os.path.join(os.getcwd(), file))
+        self.word_list = self._readfile(os.path.join(os.path.dirname(__file__),"../../", file))
 
     def _readfile(self, file) -> list:
         """
