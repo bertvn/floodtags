@@ -201,6 +201,7 @@ class RatingFormat(AbstractFormatter):
         creates the output file
         :return: None
         """
+        print(len(self.origin))
         result = ["["]
         for ori in self.origin:
             found = False

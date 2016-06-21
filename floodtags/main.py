@@ -37,6 +37,7 @@ def main(input, location, type, proc, loop,timeframe):
         # get tweets
         totaltweets += handler.get_tweets()
     # analyse tweets
+    print(len(totaltweets))
     analysis = container.create("analysis")
     analysis.set_data(totaltweets)
     keyword, language = analysis.start_analysis()
@@ -108,7 +109,7 @@ def main(input, location, type, proc, loop,timeframe):
 
         # write results
         writer = container.create("outputformatter")
-        writer.set_original_tweets(tweets)
+        writer.set_original_tweets(totaltweets)
         writer.set_tweets(tweets)
         writer.set_clusters(clusters, order)
         writer.set_newsaccounts(newsaccounts)
