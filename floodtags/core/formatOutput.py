@@ -207,7 +207,7 @@ class RatingFormat(AbstractFormatter):
             for cluster in self.clusters:
                 for tweet in cluster.get_tweets():
                     if ori.tweet["source"]["id"] == tweet.tweet["source"]["id"]:
-                        result.append("{\"id\" : " + str(tweet.tweet["source"]["id"]) + ", \"importance\" : " + str(
+                        result.append("{\"id\" : \"" + str(tweet.tweet["source"]["id"]) + "\", \"importance\" : " + str(
                             tweet.get_importance()) + "}")
                         result.append(",")
                         found = True
@@ -215,7 +215,7 @@ class RatingFormat(AbstractFormatter):
                 if found:
                     break
             if not found:
-                result.append("{\"id\" : " + str(ori.tweet["source"]["id"]) + ", \"importance\" : " + str(
+                result.append("{\"id\" : \"" + str(ori.tweet["source"]["id"]) + "\", \"importance\" : " + str(
                     ori.get_importance()) + "}")
                 result.append(",")
 
