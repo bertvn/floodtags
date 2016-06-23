@@ -10,6 +10,9 @@ import floodtags.datascience.newspipeline
 from floodtags.core.statics import StaticData
 from floodtags.linguistics.sanitizing.regexhandler import Expressions
 
+import matplotlib.pyplot as plt
+import numpy as np
+
 
 def main(input, location, type, proc, loop,timeframe):
     """
@@ -37,7 +40,6 @@ def main(input, location, type, proc, loop,timeframe):
         # get tweets
         totaltweets += handler.get_tweets()
     # analyse tweets
-    print(len(totaltweets))
     analysis = container.create("analysis")
     analysis.set_data(totaltweets)
     keyword, language = analysis.start_analysis()
@@ -52,13 +54,11 @@ def main(input, location, type, proc, loop,timeframe):
     # TODO use polyglot if language is not english
     ner = container.create("NER")
     StaticData.add_locations(ner.tag('. '.join(content)))
-    # print("cheers, love! The cavalry's here")
 
     lang = False
     # apply blacklist
-    if os.path.isdir("linguistics/language/" + language.lower()):
+    if os.path.isdir(os.path.dirname(__file__) + "/linguistics/language/" + language.lower()):
         lang = True
-        # print("Punch first, ask questions while punching")
 
     userblacklist = container.create("bannedusers")
     tweets = [tweet for tweet in totaltweets if not userblacklist.match(tweet.tweet["source"]["username"])]
@@ -105,8 +105,6 @@ def main(input, location, type, proc, loop,timeframe):
         filtering.set_data(clusters)
         order = filtering.start_filtering()
 
-        print("latest news: ", str(len(newsaccounts)))
-
         # write results
         writer = container.create("outputformatter")
         writer.set_original_tweets(totaltweets)
@@ -145,7 +143,7 @@ if __name__ == '__main__':
                              "webapp for use in dashboard; " +
                              #"json for original json + enrichment; " +
                              "enrichment for id + enrichment; " +
-                             "test for printing in cmd; " +
+                             "test for the top 20 clusters and their 5 latest tweets; " +
                              "(default:webapp)")
     parser.add_argument("-p", "--processes", dest="proc", default=4,
                         help="amount of processes used in clustering (default: 4)")
