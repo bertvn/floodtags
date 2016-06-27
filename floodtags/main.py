@@ -80,7 +80,7 @@ def main(input, location, type, proc, loop,timeframe):
             if maxdate < tweet.date:
                 maxdate = tweet.date
 
-        timedselection = [x for x in tweets if x.date > (maxdate - datetime.timedelta(minutes=timeframe))]
+        timedselection = [x for x in tweets if x.date > (maxdate - datetime.timedelta(minutes=int(timeframe)))]
 
         # cluster + spamfilter -- if language exists otherwise skip spamfilter
         if lang:

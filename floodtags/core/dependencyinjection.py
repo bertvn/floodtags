@@ -1,3 +1,6 @@
+"""
+module handling the creation of classes.
+"""
 import inspect
 import os
 
@@ -12,7 +15,14 @@ import floodtags.linguistics.ner.ner
 
 
 class Container:
+    """
+    Dependency injection container for making classes
+    """
     def __init__(self):
+        """
+        constructor for Container
+        :return: None
+        """
         self._build_container()
 
     def create(self, classname):
@@ -60,17 +70,32 @@ class Container:
             self.container.append(("region", input, None))
 
     def set_location(self, location):
+        """
+        set location of output file
+        :param location: location of output file
+        :return: None
+        """
         self.container.append(("outputlocation", location, None))
 
     def set_type(self, type):
+        """
+        set output type
+        :param type: type of output
+        :return: None
+        """
         if type == "webapp":
             self.container.append(("outputformatter", floodtags.core.formatOutput.FormatResult, ("outputlocation",)))
         if type == "enrichment":
-            self.container.append(("outputformatter", floodtags.core.formatOutput.RatingFormat, ("outputlocation",)))
+            self.container.append(("outputformatter", floodtags.core.formatOutput.ClusterFormat, ("outputlocation",)))
         if type == "test":
             self.container.append(("outputformatter", floodtags.core.formatOutput.TestFormat, ("outputlocation",)))
 
     def set_proc(self, proc):
+        """
+        how many processes are allowed to be used by the clustering
+        :param proc: amount of processes
+        :return: None
+        """
         self.container.append(("cores", proc, None))
 
     def _build_container(self):

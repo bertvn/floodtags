@@ -227,6 +227,79 @@ class RatingFormat(AbstractFormatter):
         writer.write(''.join(result))
         writer.close()
 
+class ClusterFormat(AbstractFormatter):
+    """
+    formatter for using the algorithm in the pipeline v2
+    """
+    def __init__(self, output):
+        """
+        constructor for ClusterFormat
+        :param output: location for the output file
+        :return: None
+        """
+        self.origin = []
+        super().__init__(output)
+
+    def set_original_tweets(self, tweets):
+        """
+        sets the original tweets pre removing, clustering and filtering
+        :param tweets: original tweets
+        :return: None
+        """
+        self.origin = tweets
+
+    def output_result(self):
+        """
+        creates the output file
+        :return: None
+        """
+        spam = []
+        result = ["["]
+        for ori in self.origin:
+            found = False
+            for cluster in self.clusters:
+                for tweet in cluster.get_tweets():
+                    if ori.tweet["source"]["id"] == tweet.tweet["source"]["id"]:
+                        found = True
+                        break
+                if found:
+                    break
+            if not found:
+                spam.append(str(ori.tweet["source"]["id"]))
+        index = -1
+        print(len(self.clusters), " : ", len(self.order))
+        for i in range(len(self.clusters)):
+            clust = ["{\"id\" : "]
+            clust.append(str(i))
+            clust.append(", \"score\" : ")
+            clust.append(str(self.order[i][1]))
+            clust.append(", \"summary\" : \"")
+            clust.append(self.clusters[self.order[i][0]].lcs)
+            clust.append("\", \"ids\" : [")
+            for tweet in self.clusters[self.order[i][0]].get_tweets():
+                clust.append(str(tweet.tweet["source"]["id"]))
+                clust.append(",")
+            del clust[-1]
+            clust.append("]}")
+            result.append(''.join(clust))
+            result.append(",")
+            index = i
+        clust = ["{\"id\" : "]
+        clust = clust.append(str(i))
+        clust.append(", \"score\" : 0")
+        clust.append(", \"summary\" : \"spam\"")
+        clust.append("\", \"ids\" : [")
+        for id in spam:
+            clust.append(id)
+            clust.append(",")
+        del clust[-1]
+        clust.append("]}")
+        result.append(''.join(clust))
+        result.append("]")
+        writer = open(self.output, "w",
+                      encoding='utf-8')
+        writer.write(''.join(result))
+        writer.close()
 
 class TestFormat(AbstractFormatter):
     """
