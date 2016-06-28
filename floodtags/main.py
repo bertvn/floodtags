@@ -57,7 +57,7 @@ def main(input, location, type, proc, loop,timeframe):
 
     lang = False
     # apply blacklist
-    if os.path.isdir(os.path.dirname(__file__) + "/linguistics/language/" + language.lower()):
+    if os.path.isdir(os.path.dirname(os.path.abspath(__file__)) + "/linguistics/language/" + language.lower()):
         lang = True
 
     userblacklist = container.create("bannedusers")

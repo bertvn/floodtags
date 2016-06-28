@@ -169,7 +169,7 @@ class FakeAPI(AbstractAPI):
             # use tweets from demo set
             result = []
             for i in range(self.counter, (self.counter - 5), -1):
-                with open(os.path.join(os.path.dirname(__file__),'demodata/data' + str(i) + '.json'), encoding="utf8") as data_file:
+                with open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'demodata/data' + str(i) + '.json'), encoding="utf8") as data_file:
                     result += json.load(data_file)
             self.counter -= 5
             return result
