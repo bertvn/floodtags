@@ -21,11 +21,16 @@ class AbstractFormatter(metaclass=ABCMeta):
 
         if output.endswith("/"):
             output += "result.json"
-        if output.startswith("/"):
-            output = os.getcwd() + output
+
+        if sys.platform.startswith('win'):
+            if output.startswith("/"):
+                output = os.getcwd() + output
+        else:
+            if output.startswith("./"):
+                output = os.getcwd() + output[1:]
+
         self.output = output
 
-        #self.output = "C:/Users/Bert/PycharmProjects/cherrypytest/cherrypytest/public/testresult.json"
 
     def set_tweets(self, tweets):
         """
