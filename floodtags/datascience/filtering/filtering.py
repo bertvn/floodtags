@@ -4,6 +4,7 @@ module for grading the importance of clusters
 import floodtags.core.statics
 import floodtags.datascience.filtering.algorithms as algorithms
 import floodtags.linguistics.sanitizing.regexhandler as regex
+from collections import Counter
 
 
 class Filter(object):
@@ -75,9 +76,29 @@ class ClusterAnalysis(object):
                 cluster.lcs = twt
                 mlp = (((len(twt) - 8)) * 2) + 1
                 res *= mlp
+            else:
+                # top 10 words is stored as lcs
+                words = []
+                for tweet in cluster.get_tweets():
+                    words += [word.lower() for word in tweet.tweet["text"].split() if len(word) > 3]
+                count = Counter(words)
+                flcs = []
+                for word in count.most_common(7):
+                    flcs.append(word[0])
+                cluster.lcs = ", ".join(flcs)
             usr = lcs.lcs_cluster_usernames(cluster)
             if len(usr) > 5:
                 res * (1 + (len(usr) / 10))
+        else:
+            # top 10 words is stored as lcs
+            words = []
+            for tweet in cluster.get_tweets():
+                words += [word.lower() for word in tweet.tweet["text"].split() if len(word) > 3]
+            count = Counter(words)
+            flcs = []
+            for word in count.most_common(7):
+                flcs.append(word[0])
+            cluster.lcs = ", ".join(flcs)
 
         for tweet in cluster.get_tweets():
             res *= (self.twan.analyze_tweet(tweet))

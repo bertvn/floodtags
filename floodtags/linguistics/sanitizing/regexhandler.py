@@ -21,6 +21,7 @@ class Expressions(Enum):
     waterheight = "waterheight"
     reply = "reply"
     falsealarm = "false_alarm"
+    file = "file"
 
 
 class RegexHandler():
@@ -46,6 +47,7 @@ class RegexHandler():
             "\s((\d{1,2})(\.(\d{1,2}))?)(\W?)(ft|feet|foot|meter[s|]\W|m\W|centimeter[s|]\W|cm\W)")
         self.reply = re.compile("^@([a-zA-Z0-9]*) (.*)")
         self.false_alarm = re.compile("^0( Severe)? Flood (Warning|Alert)")
+        self.file = re.compile(".*\.\w{3,4}")
 
     def replace(self, input, replace, pattern: Expressions) -> str:
         """

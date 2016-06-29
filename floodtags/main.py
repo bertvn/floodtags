@@ -10,11 +10,8 @@ import floodtags.datascience.newspipeline
 from floodtags.core.statics import StaticData
 from floodtags.linguistics.sanitizing.regexhandler import Expressions
 
-import matplotlib.pyplot as plt
-import numpy as np
 
-
-def main(input, location, type, proc, loop,timeframe):
+def main(input, location, type, proc, loop, timeframe):
     """
     Main part of the program
     :param input: input source can be a file or a stream or demo
@@ -27,8 +24,13 @@ def main(input, location, type, proc, loop,timeframe):
     if loop == "infinite":
         loop = float("inf")
 
-    logging.disable(logging.WARNING)
     container = di.Container()
+    regex = container.create("regex")
+    file = False
+    if regex.exists(input,Expressions.file):
+        file = True
+    logging.disable(logging.WARNING)
+
     container.set_input(input)
     container.set_location(location)
     container.set_type(type)
@@ -62,7 +64,6 @@ def main(input, location, type, proc, loop,timeframe):
 
     userblacklist = container.create("bannedusers")
     tweets = [tweet for tweet in totaltweets if not userblacklist.match(tweet.tweet["source"]["username"])]
-    regex = container.create("regex")
     temp = [tweet for tweet in tweets if not regex.exists(tweet.tweet["text"], Expressions.falsealarm)]
     tweets = temp
     if lang:
@@ -75,25 +76,28 @@ def main(input, location, type, proc, loop,timeframe):
     index = 0
 
     while True:
-        maxdate = datetime.datetime.strptime("1900-01-01T00:00:00.000Z", "%Y-%m-%dT%H:%M:%S.000Z")
-        for tweet in tweets:
-            if maxdate < tweet.date:
-                maxdate = tweet.date
+        if not file:
+            maxdate = datetime.datetime.strptime("1900-01-01T00:00:00.000Z", "%Y-%m-%dT%H:%M:%S.000Z")
+            for tweet in tweets:
+                if maxdate < tweet.date:
+                    maxdate = tweet.date
 
-        timedselection = [x for x in tweets if x.date > (maxdate - datetime.timedelta(minutes=int(timeframe)))]
-
-        # cluster + spamfilter -- if language exists otherwise skip spamfilter
-        if lang:
-            pool = ThreadPool(processes=1)
-            async_result = pool.apply_async(floodtags.datascience.newspipeline.frequent_tweeter_analysis,
+            timedselection = [x for x in tweets if x.date > (maxdate - datetime.timedelta(minutes=int(timeframe)))]
+            if lang:
+                pool = ThreadPool(processes=1)
+                async_result = pool.apply_async(floodtags.datascience.newspipeline.frequent_tweeter_analysis,
                                             (tweets, newslist, warnlist))
+        else:
+            timedselection = tweets
+        # cluster + spamfilter -- if language exists otherwise skip spamfilter
+
 
         clustering = container.create("clustering")
         clustering.set_data(timedselection)
 
         clusters = clustering.start_algorithm()
 
-        if lang:
+        if not file and lang:
             newsaccounts, warnaccounts, spam = async_result.get()
             for account in spam:
                 userblacklist.append(account)
@@ -139,9 +143,9 @@ if __name__ == '__main__':
                              "(default: demo)")
     parser.add_argument("-out", "--output", dest="loc", default="/", help="location of output (default: /)")
     parser.add_argument("-tp", "--outputtype", dest="type", default="webapp",
-                        help="type of output; "+
+                        help="type of output; " +
                              "webapp for use in dashboard; " +
-                             #"json for original json + enrichment; " +
+                             # "json for original json + enrichment; " +
                              "enrichment for id + enrichment; " +
                              "test for the top 20 clusters and their 5 latest tweets; " +
                              "(default:webapp)")

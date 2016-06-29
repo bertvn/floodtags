@@ -1,9 +1,9 @@
 """
 module containing output formatters for the result of the algorithm
 """
-from abc import ABCMeta
 import os
 import sys
+from abc import ABCMeta
 
 
 class AbstractFormatter(metaclass=ABCMeta):
@@ -30,7 +30,6 @@ class AbstractFormatter(metaclass=ABCMeta):
                 output = os.getcwd() + output[1:]
 
         self.output = output
-
 
     def set_tweets(self, tweets):
         """
@@ -86,6 +85,7 @@ class FormatResult(AbstractFormatter):
     """
     Result formatter used for the web application
     """
+
     def __init__(self, output):
         """
         Constructor for FormatResult
@@ -184,6 +184,7 @@ class RatingFormat(AbstractFormatter):
     """
     formatter for using the algorithm in the pipeline
     """
+
     def __init__(self, output):
         """
         constructor for RatingFormat
@@ -232,10 +233,12 @@ class RatingFormat(AbstractFormatter):
         writer.write(''.join(result))
         writer.close()
 
+
 class ClusterFormat(AbstractFormatter):
     """
     formatter for using the algorithm in the pipeline v2
     """
+
     def __init__(self, output):
         """
         constructor for ClusterFormat
@@ -306,10 +309,12 @@ class ClusterFormat(AbstractFormatter):
         writer.write(''.join(result))
         writer.close()
 
+
 class TestFormat(AbstractFormatter):
     """
     formatter used to print the top 20 clusters and their 5 lates tweets
     """
+
     def __init__(self, output):
         """
         constructor for TestFormat
@@ -323,17 +328,16 @@ class TestFormat(AbstractFormatter):
         creates the output file
         :return: None
         """
-        writer = open(self.output, "w",encoding='utf-8')
+        writer = open(self.output, "w", encoding='utf-8')
         for i in range(20):
-            writer.write("-"*79 + "\n")
+            writer.write("-" * 79 + "\n")
             writer.write("cluster " + str(i) + "\n")
             writer.write("importance value: " + str(self.order[i][1]) + "\n")
             writer.write("lcs: " + self.clusters[self.order[i][0]].lcs + "\n")
-            writer.write("-"*79 + "\n")
-            writer.write("-"*79 + "\n")
-            tweets = self.clusters[self.order[i][0]].get_five_latest()
+            writer.write("-" * 79 + "\n")
+            writer.write("-" * 79 + "\n")
+            tweets = self.clusters[self.order[i][0]].get_tweets()
             for tweet in tweets:
                 writer.write(tweet.tweet["text"] + "\n")
-                writer.write("-"*79 + "\n")
+                writer.write("-" * 79 + "\n")
         writer.close()
-
