@@ -69,6 +69,7 @@ class ClusterAnalysis(object):
         res = 1.0
         cs = cluster.get_cosine_sim()
         res *= (1.01 - (cs / 2))
+        word_count = 5
         if cs >= 0.5:
             lcs = algorithms.LongestCommonSubstring()
             twt = lcs.lcs_cluster(cluster)
@@ -77,13 +78,13 @@ class ClusterAnalysis(object):
                 mlp = (((len(twt) - 8)) * 2) + 1
                 res *= mlp
             else:
-                # top 10 words is stored as lcs
+                # top 5 words is stored as lcs
                 words = []
                 for tweet in cluster.get_tweets():
                     words += [word.lower() for word in tweet.tweet["text"].split() if len(word) > 3]
                 count = Counter(words)
                 flcs = []
-                for word in count.most_common(7):
+                for word in count.most_common(word_count):
                     flcs.append(word[0])
                 cluster.lcs = ", ".join(flcs)
             usr = lcs.lcs_cluster_usernames(cluster)
@@ -96,7 +97,7 @@ class ClusterAnalysis(object):
                 words += [word.lower() for word in tweet.tweet["text"].split() if len(word) > 3]
             count = Counter(words)
             flcs = []
-            for word in count.most_common(7):
+            for word in count.most_common(word_count):
                 flcs.append(word[0])
             cluster.lcs = ", ".join(flcs)
 
