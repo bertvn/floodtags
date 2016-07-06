@@ -280,7 +280,10 @@ class ClusterFormat(AbstractFormatter):
             clust = ["{\"id\" : "]
             clust.append(str(i))
             clust.append(", \"score\" : ")
-            clust.append(str(self.order[i][1]))
+            try:
+                clust.append(str(self.order[i][1]))
+            except:
+                clust.append("0")
             clust.append(", \"summary\" : \"")
             clust.append(self.clusters[self.order[i][0]].lcs)
             clust.append("\", \"ids\" : [")
@@ -293,7 +296,7 @@ class ClusterFormat(AbstractFormatter):
             result.append(",")
             index = i
         clust = ["{\"id\" : "]
-        clust = clust.append(str(i))
+        clust.append(str(i))
         clust.append(", \"score\" : 0")
         clust.append(", \"summary\" : \"spam\"")
         clust.append("\", \"ids\" : [")

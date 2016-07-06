@@ -35,7 +35,7 @@ class Filter(object):
         ratings = []
         for cluster in self.data:
             if cluster.get_length() <= 3:
-                ratings.append(-100)
+                ratings.append(0)
             else:
                 ratings.append(clanalysis.analyze_cluster(cluster))
         order = []
@@ -100,6 +100,8 @@ class ClusterAnalysis(object):
             for word in count.most_common(word_count):
                 flcs.append(word[0])
             cluster.lcs = ", ".join(flcs)
+
+        cluster.lcs.replace("\"","")
 
         for tweet in cluster.get_tweets():
             res *= (self.twan.analyze_tweet(tweet))

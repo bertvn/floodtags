@@ -5,12 +5,14 @@ import os
 import sys
 
 from nltk import StanfordNERTagger
+from polyglot.text import Text
 
 
 class NERHandler(object):
     """
     handler class for the Stanford NER
     """
+
     def __init__(self):
         """
         constructor for the NERHandler class
@@ -29,9 +31,10 @@ class NERHandler(object):
     def tag(self, text):
         """
         search for Named locations within text
-        :param text: String containing text that needs to be searched
+        :param text: String list containing text that needs to be searched
         :return: list of locations
         """
+        text = '. '.join(text)
         tags = self.st.tag(text.split())
         # if there is tag 'LOCATION' add to locations, note locations can be multiple tags long
         i = 0
@@ -51,4 +54,23 @@ class NERHandler(object):
         locations = list(set(locations))
         return locations
 
+
 # TODO: implement polyglot NER if language is not english
+
+class PolyHandler(object):
+
+    def tag(self, text):
+        locations = []
+        for tweet in text:
+            str = Text(tweet)
+            try:
+                for entity in str.entities:
+                    if entity.tag == "I-LOC":
+                        loc = []
+                        for part in entity:
+                            loc.append(part)
+                        locations.append(" ".join(loc))
+            except:
+                continue
+        locations = list(set(locations))
+        return locations

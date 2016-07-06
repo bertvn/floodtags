@@ -27,7 +27,7 @@ def main(input, location, type, proc, loop, timeframe):
     container = di.Container()
     regex = container.create("regex")
     file = False
-    if regex.exists(input,Expressions.file):
+    if regex.exists(input, Expressions.file):
         file = True
     logging.disable(logging.WARNING)
 
@@ -53,9 +53,11 @@ def main(input, location, type, proc, loop, timeframe):
     for tweet in totaltweets:
         content.append(tweet.tweet["text"])
 
-    # TODO use polyglot if language is not english
+    if language != "English":
+        print(language)
+        container.switch_ner()
     ner = container.create("NER")
-    StaticData.add_locations(ner.tag('. '.join(content)))
+    StaticData.add_locations(ner.tag(content))
 
     lang = False
     # apply blacklist
@@ -86,7 +88,7 @@ def main(input, location, type, proc, loop, timeframe):
             if lang:
                 pool = ThreadPool(processes=1)
                 async_result = pool.apply_async(floodtags.datascience.newspipeline.frequent_tweeter_analysis,
-                                            (tweets, newslist, warnlist))
+                                                (tweets, newslist, warnlist))
         else:
             timedselection = tweets
         # cluster + spamfilter -- if language exists otherwise skip spamfilter

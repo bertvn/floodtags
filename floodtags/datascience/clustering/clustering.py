@@ -188,7 +188,7 @@ class Cluster:
         :return: None
         """
         self.tweets = []
-        self.lcs = "mixed"
+        self.lcs = "outliers"
         self.importance = 0
 
     def add_tweet(self, tweet):

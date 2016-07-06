@@ -98,6 +98,11 @@ class Container:
         """
         self.container.append(("cores", proc, None))
 
+    def switch_ner(self):
+        self.container = [(a, b, c) for a, b, c in self.container if a is not "NER"]
+        self.container.append(("NER", floodtags.linguistics.ner.ner.PolyHandler, None))
+
+
     def _build_container(self):
         """
         Builds dependency injection container
