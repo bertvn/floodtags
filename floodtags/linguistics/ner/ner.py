@@ -6,6 +6,9 @@ import sys
 
 from nltk import StanfordNERTagger
 from polyglot.text import Text
+from multiprocessing.dummy import Pool as ThreadPool
+import polyglot.detect
+import re
 
 
 class NERHandler(object):
@@ -57,20 +60,28 @@ class NERHandler(object):
 
 # TODO: implement polyglot NER if language is not english
 
+def poly_ner(text):
+    processed = Text(text)
+    locations = []
+    try:
+        for entity in processed.entities:
+            if entity.tag == "I-LOC":
+                loc = []
+                for part in entity:
+                    loc.append(part)
+                locations.append((" ".join(loc)))
+        return locations
+    except Exception as e:
+        print(e)
+        print("language:", polyglot.detect.Detector(re.sub('#', '', text)).language.name)
+        print("can't analyse tweet")
+
+
 class PolyHandler(object):
 
     def tag(self, text):
-        locations = []
-        for tweet in text:
-            str = Text(tweet)
-            try:
-                for entity in str.entities:
-                    if entity.tag == "I-LOC":
-                        loc = []
-                        for part in entity:
-                            loc.append(part)
-                        locations.append(" ".join(loc))
-            except:
-                continue
+        pool = ThreadPool(4)
+        locations = pool.map(poly_ner, text)
+        locations[:] = [item for sublist in locations for item in sublist]
         locations = list(set(locations))
         return locations

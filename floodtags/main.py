@@ -29,7 +29,7 @@ def main(input, location, type, proc, loop, timeframe):
     file = False
     if regex.exists(input, Expressions.file):
         file = True
-    logging.disable(logging.WARNING)
+    #logging.disable(logging.WARNING)
 
     container.set_input(input)
     container.set_location(location)
@@ -41,6 +41,8 @@ def main(input, location, type, proc, loop, timeframe):
     while len(totaltweets) < 5000:
         # get tweets
         totaltweets += handler.get_tweets()
+        if file:
+            break
     # analyse tweets
     analysis = container.create("analysis")
     analysis.set_data(totaltweets)
@@ -57,12 +59,17 @@ def main(input, location, type, proc, loop, timeframe):
         print(language)
         container.switch_ner()
     ner = container.create("NER")
+    print("starting locations gathering")
     StaticData.add_locations(ner.tag(content))
+
+    print("locations obtained")
 
     lang = False
     # apply blacklist
     if os.path.isdir(os.path.dirname(os.path.abspath(__file__)) + "/linguistics/language/" + language.lower()):
         lang = True
+
+    print("language specific files found:", lang)
 
     userblacklist = container.create("bannedusers")
     tweets = [tweet for tweet in totaltweets if not userblacklist.match(tweet.tweet["source"]["username"])]

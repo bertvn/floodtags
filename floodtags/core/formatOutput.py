@@ -3,6 +3,7 @@ module containing output formatters for the result of the algorithm
 """
 import os
 import sys
+import uuid
 from abc import ABCMeta
 
 
@@ -274,18 +275,16 @@ class ClusterFormat(AbstractFormatter):
                     break
             if not found:
                 spam.append(str(ori.tweet["source"]["id"]))
-        index = -1
-        print(len(self.clusters), " : ", len(self.order))
         for i in range(len(self.clusters)):
-            clust = ["{\"id\" : "]
-            clust.append(str(i))
-            clust.append(", \"score\" : ")
+            clust = ["{\"id\" : \""]
+            clust.append(str(uuid.uuid4()))
+            clust.append("\", \"score\" : ")
             try:
                 clust.append(str(self.order[i][1]))
             except:
                 clust.append("0")
             clust.append(", \"summary\" : \"")
-            clust.append(self.clusters[self.order[i][0]].lcs)
+            clust.append(self.clusters[self.order[i][0]].lcs.replace("\"", "\\\"").replace("\r\n", "").replace("\r","").replace("\n",""))
             clust.append("\", \"ids\" : [")
             for tweet in self.clusters[self.order[i][0]].get_tweets():
                 clust.append(str(tweet.tweet["source"]["id"]))
@@ -294,12 +293,10 @@ class ClusterFormat(AbstractFormatter):
             clust.append("]}")
             result.append(''.join(clust))
             result.append(",")
-            index = i
-        clust = ["{\"id\" : "]
-        clust.append(str(i))
-        clust.append(", \"score\" : 0")
-        clust.append(", \"summary\" : \"spam\"")
-        clust.append("\", \"ids\" : [")
+        clust = ["{\"id\" : \""]
+        clust.append(str(uuid.uuid4()))
+        clust.append("\", \"score\" : 0")
+        clust.append(", \"summary\" : \"spam\", \"ids\" : [")
         for id in spam:
             clust.append(id)
             clust.append(",")

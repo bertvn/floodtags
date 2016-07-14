@@ -18,7 +18,7 @@ class APIHandler(object):
         :return: None
         """
         self.api = api
-        self.last = datetime.datetime.now() - datetime.timedelta(hours=12)
+        self.last = datetime.datetime.now() - datetime.timedelta(hours=240)
 
     def get_tweets(self):
         """

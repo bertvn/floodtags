@@ -117,7 +117,7 @@ class ClusterAnalysis(object):
         :param clustersize: size of the cluster
         :return:
         """
-        max = (0.60 * 9605 * 2.2 * (1.08171 ** clustersize)) / clustersize
+        max = (0.60 * 9605 * 2.2 * (1.08171 ** clustersize)) / (clustersize * 10)
         min = 1.01 / clustersize
         return (value - min) / (max - min)
 
