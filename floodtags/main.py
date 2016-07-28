@@ -29,7 +29,7 @@ def main(input, location, type, proc, loop, timeframe):
     file = False
     if regex.exists(input, Expressions.file):
         file = True
-    #logging.disable(logging.WARNING)
+    logging.disable(logging.WARNING)
 
     container.set_input(input)
     container.set_location(location)
